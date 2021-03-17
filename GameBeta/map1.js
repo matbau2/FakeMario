@@ -12,14 +12,14 @@ function MakeMap1() {
         y: height / 4 + 10,
         width: 10,
         height: height,
-        color: 'green'
+        color: 'white'
     });
     boxes.push({//box on left
         x: 0,
         y: 0,
         width: 10,
         height: height / 4 - 15,
-        color: 'green'
+        color: 'black'
     });
     boxes.push({//box on right
         x: width - 10,
