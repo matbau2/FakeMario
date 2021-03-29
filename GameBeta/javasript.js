@@ -25,14 +25,14 @@ var canvas = document.getElementById("canvas"),
     friction = 0.8,
     gravity = 0.2,
     boxes = [],
-    powerup = [];  
+    powerup = [];
+    
+      
+level=1;
 
 
 
-MakeMap1(boxes);
-
-
-
+MakeMap1();
 
 
 
@@ -134,7 +134,8 @@ function update() {
           player.y=powerup[j].py;
         }
         else if (powerup[j].effect==='win'){
-          var r = confirm("You win! Play again?");
+          boxes =0;
+          MakeMap2();
           if (r == false) {
                player.x=200;
                player.y=200;

@@ -68,21 +68,21 @@ function MakeMap1() {
         y: 300,
         width: 160,
         height: 10,
-        color: '#655643'
+        color: 'black'
     });
     boxes.push({
         x: 0,
         y: 350,
         width: 90,
         height: 10,
-        color: '#655643'
+        color: 'black'
     });
     boxes.push({
         x: 90,
         y: 350,
         width: 10,
         height: 50,
-        color: '#655643'
+        color: 'black'
     });
 
 
@@ -95,17 +95,17 @@ function MakeMap1() {
         color: '#BF4D28',
         effect: 'shrink'
     });
+
     powerup.push({
         x: 400,
         y: 150,
         width: 20,
         height: 20,
-        color: '#BF4D28',
-        effect: 'gravity'
+        //sprite: new Sprite('img/sprites.png', [0, 39], [18, 8]),
     });
     powerup.push({
         x: 0,
-        y: 120,
+        y: 300,
         width: 20,
         height: 20,
         color: '#222',
