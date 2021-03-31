@@ -440,14 +440,21 @@ Clarity.prototype.draw_player = function (context) {
     context.fillStyle = this.player.colour;
 
     context.beginPath();
+	//context.fillStyle = "#c82124";
+    context.rect((this.player.loc.x + this.tile_size / 2 - this.camera.x) - this.tile_size / 2,
+        (this.player.loc.y + this.tile_size / 2 - this.camera.y) - this.tile_size / 2,
+        this.tile_size  ,
+        this.tile_size  );
+	
+    //context.arc(
+    //    this.player.loc.x + this.tile_size / 2 - this.camera.x,
+    //    this.player.loc.y + this.tile_size / 2 - this.camera.y,
+    //    this.tile_size / 2 - 1,
+    //    0,
+    //    Math.PI * 2
+    //);
 
-    context.arc(
-        this.player.loc.x + this.tile_size / 2 - this.camera.x,
-        this.player.loc.y + this.tile_size / 2 - this.camera.y,
-        this.tile_size / 2 - 1,
-        0,
-        Math.PI * 2
-    );
+
 
     context.fill();
 };
