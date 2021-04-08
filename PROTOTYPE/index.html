@@ -15,7 +15,7 @@
 
 
 
-
+<div id="gamecontainer">
     <canvas id="canvas"></canvas>
 
     <p>
@@ -27,6 +27,12 @@
     <button id="green play" onclick="myFunction()">
         Change mc color
     </button>
+
+    <h1 id="countHeader">Score:  <span id="myCountText"></span></h1>
+  </div>
+
+
+
     <script>
         function myFunction() {
             this.player.colour = color.blue;
@@ -57,6 +63,9 @@
         canvas.height = 400;
 
         /* Customisable map data */
+
+        var coinCount = 0;
+
 
         var map = {
 
@@ -191,7 +200,7 @@
             /* scripts refered to by the "script" variable in the tile keys */
 
             scripts: {
-                change_colour: 'this.player.colour = "#"+(Math.random()*0xFFFFFF<<0).toString(16);',
+                change_colour: 'this.player.colour = "#"+(Math.random()*0xFFFFFF<<0).toString(16);coinCount+=5;',
                 /* you could load a new map variable here */
                 next_level: 'alert("Yay! You won! Reloading map.");this.load_map(map);',
                 death: 'alert("You died!");this.load_map(map);',
@@ -220,6 +229,7 @@
 
             game.update();
             game.draw(ctx);
+            document.getElementById("myCountText").innerHTML = coinCount;
 
             window.requestAnimFrame(Loop);
         };

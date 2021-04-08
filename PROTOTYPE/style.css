@@ -48,3 +48,9 @@ button:focus{background-color:red;}
 a {
   color:#3377ee;
 }
+#countHeader{
+  color: #FFF;
+  position: absolute;
+  top: 5%;
+  right: 2%;
+}
