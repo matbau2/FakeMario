@@ -12,6 +12,8 @@ canvas {
   margin: 40px auto 20px;
   border: 1px solid #333;
   box-shadow: 0 0 16px 2px rgba(0,0,0,0.8);
+  height: 20%;
+  width: 80%;
 }
 
 p, a {
