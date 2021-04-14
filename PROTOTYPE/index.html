@@ -15,13 +15,13 @@
 
 	<div id="AllButtons">
 	
-	<div id="StartButton" >
-    <button id="green play" onclick="LoadWholeGame();HideShowGame();HideAllButtons();win.play()">
+	<div id="StartButton" class="text-center">
+    <button id="green play" style="margin-left:auto;margin-right" onclick="LoadWholeGame();HideShowGame();HideAllButtons();win.play()">
         Start
     </button>
 	</div>
 	
-	<div id="SettingsButton">
+	<div id="SettingsButton" class="text-center">
 	<button id="green play" onclick="LoadWholeGame();HideShowGame()">
         Settings
     </button>
@@ -33,19 +33,26 @@
 
 <div id="gamecontainer">
     <canvas id="canvas"></canvas>
-
+	
+<!--
     <p>
+
         Use the left, right and up arrow keys to move.
+
     </p>
-    <button id="music" onclick="PlayStopMusic()">
-        Play/Stop Backround Music
-    </button>
+-->
+
 
 
     <h1 id="countHeader">Score:  <span id="myCountText"></span></h1>
-	    <label for="viewport">
+	    <!--
+		<label for="viewport">
         <input type="checkbox" id="viewport" onclick="game.limit_viewport=this.checked;" checked /> Confine viewport to map
-    </label>
+      </label>
+	  -->
+	  		<button id="music" onclick="PlayStopMusic()">
+        Play/Stop Backround Music
+    </button>
   </div>
 
 
@@ -170,7 +177,7 @@ function LoadWholeGame()
                 [2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 4, 2, 1, 2],
                 [2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 4, 2, 1, 2],
                 [2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 4, 2, 1, 2],
-                [2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 4, 2, 1, 2],
+                [2, 7, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 4, 2, 1, 2],
                 [2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 4, 2, 1, 2],
                 [2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 1, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 4, 2, 1, 2],
                 [2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 1, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 4, 2, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2],
@@ -240,7 +247,7 @@ function LoadWholeGame()
             /* scripts refered to by the "script" variable in the tile keys */
 
             scripts: {
-                change_colour: 'this.player.colour = "#"+(Math.random()*0xFFFFFF<<0).toString(16);coinCount+=5;',
+                change_colour: 'this.player.colour = "#"+(Math.random()*0xFFFFFF<<0).toString(16);this.coinCount+=5;',
                 /* you could load a new map variable here */
                 next_level: 'alert("Yay! You won! Reloading map.");this.load_map(map);',
                 death: 'alert("You died!");this.load_map(map);',
