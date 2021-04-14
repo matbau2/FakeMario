@@ -11,9 +11,11 @@
     <script type="text/javascript" src="Clarity.js"></script>
 </head>
 
-<body>
+<body onload="HideShow()">
 
-
+    <button id="green play" onclick="myFunction();HideShow()">
+        start Game Test
+    </button>
 
 <div id="gamecontainer">
     <canvas id="canvas"></canvas>
@@ -24,20 +26,28 @@
     <button id="green play" onclick="win.play()">
         Play Backround Music
     </button>
-    <button id="green play" onclick="myFunction()">
-        start Game Test
-    </button>
+
 
     <h1 id="countHeader">Score:  <span id="myCountText"></span></h1>
+	    <label for="viewport">
+        <input type="checkbox" id="viewport" onclick="game.limit_viewport=this.checked;" checked /> Confine viewport to map
+    </label>
   </div>
 
 
 
-    <label for="viewport">
-        <input type="checkbox" id="viewport" onclick="game.limit_viewport=this.checked;" checked /> Confine viewport to map
-    </label>
+
 
     <script type="text/javascript">
+	function HideShow() {
+  var x = document.getElementById("gamecontainer");
+  if (x.style.display === "none") {
+    x.style.display = "block";
+  } else {
+    x.style.display = "none";
+  }
+}
+	
 function myFunction() 
 	{
         window.requestAnimFrame =
@@ -212,6 +222,7 @@ function myFunction()
         /* Limit the viewport to the confines of the map */
 
         game.limit_viewport = true;
+		
 
         var Loop = function () {
 
