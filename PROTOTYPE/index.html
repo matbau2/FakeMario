@@ -15,8 +15,8 @@
 
 	<div id="AllButtons">
 	
-	<div id="StartButton">
-    <button id="green play" onclick="LoadWholeGame();HideShowGame();HideAllButtons()">
+	<div id="StartButton" >
+    <button id="green play" onclick="LoadWholeGame();HideShowGame();HideAllButtons();win.play()">
         Start
     </button>
 	</div>
@@ -37,8 +37,8 @@
     <p>
         Use the left, right and up arrow keys to move.
     </p>
-    <button id="green play" onclick="win.play()">
-        Play Backround Music
+    <button id="music" onclick="PlayStopMusic()">
+        Play/Stop Backround Music
     </button>
 
 
@@ -61,6 +61,18 @@
     x.style.display = "none";
   }
 }
+	function PlayStopMusic() {
+	if(win.currentTime > 0){
+	document.getElementById("music").style.background='#f54242';
+	win.pause();
+	win.currentTime=0;
+	}
+	else {
+	win.play();
+	document.getElementById("music").style.background='#42f578';
+
+	}
+}
 
 	function HideAllButtons() {
   var x = document.getElementById("AllButtons");
@@ -70,6 +82,7 @@
     x.style.display = "none";
   }
 }
+
 	
 function LoadWholeGame() 
 	{

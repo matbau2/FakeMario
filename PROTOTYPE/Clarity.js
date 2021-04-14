@@ -20,7 +20,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 */
 var win = new Audio('bounce.mp3');
-
+win.volume = 0.2;
 var Clarity = function () {
   
     this.alert_errors   = false;
