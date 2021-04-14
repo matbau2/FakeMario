@@ -11,11 +11,25 @@
     <script type="text/javascript" src="Clarity.js"></script>
 </head>
 
-<body onload="HideShow()">
+<body onload="HideShowGame()">
 
-    <button id="green play" onclick="myFunction();HideShow()">
-        start Game Test
+	<div id="AllButtons">
+	
+	<div id="StartButton">
+    <button id="green play" onclick="LoadWholeGame();HideShowGame();HideAllButtons()">
+        Start
     </button>
+	</div>
+	
+	<div id="SettingsButton">
+	<button id="green play" onclick="LoadWholeGame();HideShowGame()">
+        Settings
+    </button>
+	</div>
+	
+	</div>
+	
+	
 
 <div id="gamecontainer">
     <canvas id="canvas"></canvas>
@@ -39,7 +53,7 @@
 
 
     <script type="text/javascript">
-	function HideShow() {
+	function HideShowGame() {
   var x = document.getElementById("gamecontainer");
   if (x.style.display === "none") {
     x.style.display = "block";
@@ -47,8 +61,17 @@
     x.style.display = "none";
   }
 }
+
+	function HideAllButtons() {
+  var x = document.getElementById("AllButtons");
+  if (x.style.display === "none") {
+    x.style.display = "block";
+  } else {
+    x.style.display = "none";
+  }
+}
 	
-function myFunction() 
+function LoadWholeGame() 
 	{
         window.requestAnimFrame =
             window.requestAnimationFrame ||
