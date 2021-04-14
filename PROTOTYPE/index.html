@@ -25,7 +25,7 @@
         Play Backround Music
     </button>
     <button id="green play" onclick="myFunction()">
-        Change mc color
+        start Game Test
     </button>
 
     <h1 id="countHeader">Score:  <span id="myCountText"></span></h1>
@@ -33,19 +33,13 @@
 
 
 
-    <script>
-        function myFunction() {
-            this.player.colour = color.blue;
-        }
-    </script>
-
-
     <label for="viewport">
         <input type="checkbox" id="viewport" onclick="game.limit_viewport=this.checked;" checked /> Confine viewport to map
     </label>
 
     <script type="text/javascript">
-
+function myFunction() 
+	{
         window.requestAnimFrame =
             window.requestAnimationFrame ||
             window.webkitRequestAnimationFrame ||
@@ -238,7 +232,7 @@
 
         Loop();
         //var boob;
-
+	}
     </script>
 </body>
 
