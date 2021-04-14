@@ -48,11 +48,14 @@ button:focus{background-color:red;}
 a {
   color:#3377ee;
 }
-#countHeader{
-  color: #FFF;
+#scoreCount{
+  color: #fcfc03;
   position: absolute;
   top: 5%;
   right: 2%;
+}
+.scoreCount:before {
+   content: "Score: ";
 }
 #music{
   background-color: #42f578;

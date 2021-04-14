@@ -44,15 +44,19 @@
 
 
 
-    <h1 id="countHeader">Score:  <span id="myCountText"></span></h1>
+    
 	    <!--
 		<label for="viewport">
         <input type="checkbox" id="viewport" onclick="game.limit_viewport=this.checked;" checked /> Confine viewport to map
       </label>
 	  -->
+	  <h1 style="color:white" id="scoreCount">hello<h1/>
 	  		<button id="music" onclick="PlayStopMusic()">
         Play/Stop Backround Music
     </button>
+	
+	
+	
   </div>
 
 
@@ -247,7 +251,7 @@ function LoadWholeGame()
             /* scripts refered to by the "script" variable in the tile keys */
 
             scripts: {
-                change_colour: 'this.player.colour = "#"+(Math.random()*0xFFFFFF<<0).toString(16);this.coinCount+=5;',
+                change_colour: 'this.player.colour = "#"+(Math.random()*0xFFFFFF<<0).toString(16);coinCountt = coinCountt+1;',
                 /* you could load a new map variable here */
                 next_level: 'alert("Yay! You won! Reloading map.");this.load_map(map);',
                 death: 'alert("You died!");this.load_map(map);',
@@ -277,7 +281,9 @@ function LoadWholeGame()
 
             game.update();
             game.draw(ctx);
-            document.getElementById("myCountText").innerHTML = coinCount;
+            /*
+			document.getElementById("myCountText").innerHTML = ""+coinCount;
+			*/
 
             window.requestAnimFrame(Loop);
         };

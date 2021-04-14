@@ -21,6 +21,7 @@ THE SOFTWARE.
 */
 var win = new Audio('bounce.mp3');
 win.volume = 0.2;
+var coinCountt =0;
 var Clarity = function () {
   
     this.alert_errors   = false;
@@ -433,6 +434,7 @@ Clarity.prototype.update_player = function () {
     }
 
     this.move_player();
+	document.getElementById("scoreCount").innerHTML = "Score: " + coinCountt;
 };
 
 Clarity.prototype.draw_player = function (context) {
@@ -462,6 +464,10 @@ Clarity.prototype.draw_player = function (context) {
 Clarity.prototype.update = function () {
 
     this.update_player();
+};
+Clarity.prototype.addCoin = function () {
+
+    this.coinCountt+=1;
 };
 
 Clarity.prototype.draw = function (context) {
