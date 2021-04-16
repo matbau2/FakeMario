@@ -55,6 +55,10 @@
         Play/Stop Backround Music
     </button>
 	
+	  		<button id="fx" onclick="PlayStopFX()">
+        Play/Stop Backround Music
+    </button>
+	
 	
 	
   </div>
@@ -83,6 +87,10 @@
 	document.getElementById("music").style.background='#42f578';
 
 	}
+}
+
+	function PlayStopFX() {
+
 }
 
 	function HideAllButtons() {
@@ -150,7 +158,8 @@ function LoadWholeGame()
                 { id: 8, colour: '#FADF73', solid: 0, script: 'next_level' },
                 { id: 9, colour: '#C93232', solid: 0, script: 'death' },
                 { id: 10, colour: '#555', solid: 1 },
-                { id: 11, colour: '#0FF', solid: 0, script: 'unlock' }
+                { id: 11, colour: '#0FF', solid: 0, script: 'unlock' },
+				{ id: 12, colour: '#fcfc03', solid: 0, script: 'addcoin'}
             ],
 
             /* An array representing the map tiles. Each number corresponds to a key */
@@ -181,7 +190,7 @@ function LoadWholeGame()
                 [2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 4, 2, 1, 2],
                 [2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 4, 2, 1, 2],
                 [2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 4, 2, 1, 2],
-                [2, 7, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 4, 2, 1, 2],
+                [2, 7, 1, 1, 1, 12, 1, 12, 1, 1, 1, 1, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 4, 2, 1, 2],
                 [2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 4, 2, 1, 2],
                 [2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 1, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 4, 2, 1, 2],
                 [2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 1, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 4, 2, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2],
@@ -256,7 +265,7 @@ function LoadWholeGame()
                 next_level: 'alert("Yay! You won! Reloading map.");this.load_map(map);',
                 death: 'alert("You died!");this.load_map(map);',
                 unlock: 'this.current_map.keys[10].solid = 0;this.current_map.keys[10].colour = "#888";',
-
+				addcoin: 'coinCountt = coinCountt+1;this.current_map.keys[12].colour = "#888";'
             }
         };
 

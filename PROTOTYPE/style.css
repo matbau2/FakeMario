@@ -62,6 +62,11 @@ a {
   float: left;
   
 }
+#fx{
+  background-color: #42f578;
+  float: left;
+  
+}
 
 .text-center {
   text-align: center;
