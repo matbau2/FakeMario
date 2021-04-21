@@ -21,6 +21,22 @@ THE SOFTWARE.
 */
 var win = new Audio('bounce.mp3');
 win.volume = 0.2;
+
+var jumpsound = new Audio('jump.mp3');
+jumpsound.volume = 1;
+
+var coinsound = new Audio('coin.mp3');
+coinsound.volume = 1;
+
+var deathsound = new Audio('death.mp3');
+deathsound.volume = 1;
+
+var interactsound = new Audio('interact.mp3');
+interactsound.volume = 1;
+
+var trampolinesound = new Audio('trampolinesound.mp3');
+win.volume = 1;
+
 var coinCountt =0;
 var Clarity = function () {
 
@@ -334,7 +350,7 @@ Clarity.prototype.move_player = function () {
         if (top2.solid && top2.bounce > bounce) bounce = top2.bounce;
         if (bottom1.solid && bottom1.bounce > bounce) bounce = bottom1.bounce;
         if (bottom2.solid && bottom2.bounce > bounce) bounce = bottom2.bounce;
-
+        
         this.player.vel.y *= -bounce || 0;
 
         if ((bottom1.solid || bottom2.solid) && !tile.jump) {
@@ -422,6 +438,9 @@ Clarity.prototype.update_player = function () {
 
         if (this.player.can_jump && this.player.vel.y > -this.current_map.vel_limit.y) {
 
+
+            //JUMPP SOOUND TRAMPOLINEEEEEEEEEEE
+            jumpsound.play();
             this.player.vel.y -= this.current_map.movement_speed.jump;
             this.player.can_jump = false;
         }
@@ -444,18 +463,18 @@ Clarity.prototype.draw_player = function (context) {
 
     context.beginPath();
 	//context.fillStyle = "#c82124";
-    context.rect((this.player.loc.x + this.tile_size / 2 - this.camera.x) - this.tile_size / 2,
-        (this.player.loc.y + this.tile_size / 2 - this.camera.y) - this.tile_size / 2,
-        this.tile_size  ,
-        this.tile_size  );
+  //  context.rect((this.player.loc.x + this.tile_size / 2 - this.camera.x) - this.tile_size / 2,
+    //    (this.player.loc.y + this.tile_size / 2 - this.camera.y) - this.tile_size / 2,
+      //  this.tile_size  ,
+      //  this.tile_size  );
 
-    //context.arc(
-    //    this.player.loc.x + this.tile_size / 2 - this.camera.x,
-    //    this.player.loc.y + this.tile_size / 2 - this.camera.y,
-    //    this.tile_size / 2 - 1,
-    //    0,
-    //    Math.PI * 2
-    //);
+    context.arc(
+        this.player.loc.x + this.tile_size / 2 - this.camera.x,
+      this.player.loc.y + this.tile_size / 2 - this.camera.y,
+        this.tile_size / 2 - 1,
+        0,
+        Math.PI * 2
+    );
 
 
 
