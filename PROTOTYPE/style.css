@@ -40,19 +40,19 @@ button {
   margin-top: 50px;
   border-radius: 10px;
   padding: 10px;
-  height: 100px; 
+  height: 100px;
 width: 200px;
 }
     .small-btn {
         width: 50px;
         height: 25px;
     }
-    
+
     .medium-btn {
         width: 70px;
         height: 30px;
     }
-    
+
     .big-btn {
         width: 90px;
         height: 40px;
@@ -72,18 +72,32 @@ a {
   top: 5%;
   right: 2%;
 }
+
+#debug{
+  color: #fcfc03;
+  position: absolute;
+  top: 5%;
+  left: 2%;
+
+}
+
 .scoreCount:before {
    content: "Score: ";
+}
+
+.debug:before{
+
+  content:"hello";
 }
 #music{
   background-color: #42f578;
   float: left;
-  
+
 }
 #fx{
   background-color: #42f578;
   float: left;
-  
+
 }
 
 .text-center {
@@ -92,4 +106,9 @@ a {
 h1 {
   margin: 0;
     display: inline-block;
+}
+h2{
+  margin: 0;
+    display: inline-block;
+
 }

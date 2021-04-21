@@ -14,21 +14,21 @@
 <body onload="HideShowGame();HideShowStart()">
 
 	<div id="AllButtons">
-	
+
 	<div id="StartButton" class="text-center">
     <button id="green play" style="margin-left:auto;margin-right" onclick="HideAllButtons();HideShowStart()">
         Start
     </button>
 	</div>
-	
+
 	<div id="SettingsButton" class="text-center">
 	<button id="green play" onclick="LoadWholeGame();HideShowGame()">
         Settings
     </button>
 	</div>
-	
+
 	</div>
-	
+
 	<div id="Start">
 	<button class="" onclick="LoadWholeGame();HideShowGame();HideShowStart();win.play()">
         Level 1
@@ -43,11 +43,11 @@
         Level 4
     </button>
 	</div>
-	
+
 
 <div id="gamecontainer">
     <canvas id="canvas"></canvas>
-	
+
 <!--
     <p>
 		win.play()
@@ -58,23 +58,24 @@
 
 
 
-    
+
 	    <!--
 		<label for="viewport">
         <input type="checkbox" id="viewport" onclick="game.limit_viewport=this.checked;" checked /> Confine viewport to map
       </label>
 	  -->
 	  <h1 style="color:white" id="scoreCount">hello<h1/>
+      <h2 id="debug" style="color:white">mew<h1/>
 	  		<button id="music" onclick="PlayStopMusic()">
         Play/Stop Backround Music
     </button>
-	
+
 	  		<button id="fx" onclick="PlayStopFX()">
         Play/Stop FX
     </button>
-	
-	
-	
+
+
+
   </div>
 
 
@@ -125,8 +126,8 @@
   }
 }
 
-	
-function LoadWholeGame() 
+
+function LoadWholeGame()
 	{
         window.requestAnimFrame =
             window.requestAnimationFrame ||
@@ -168,11 +169,11 @@ function LoadWholeGame()
             script   [optional] - refers to a script in the scripts section, executed if it is touched.
 
             */
- 
+
             keys: [
                 { id: 0, colour: '#333', solid: 0 },
                 { id: 1, colour: '#888', solid: 0 },
-                { id: 2, colour: '#555', solid: 1, bounce: 0.35 },
+                { id: 2, colour: '#555', solid: 1, bounce: 0.05 },
                 { id: 3, colour: 'rgba(121, 220, 242, 0.4)', friction: { x: 0.9, y: 0.9 }, gravity: { x: 0, y: 0.1 }, jump: 1, fore: 1 },
                 { id: 4, colour: '#777', jump: 1 },
                 { id: 5, colour: '#E373FA', solid: 1, bounce: 1.1 },
@@ -182,7 +183,9 @@ function LoadWholeGame()
                 { id: 9, colour: '#C93232', solid: 0, script: 'death' },
                 { id: 10, colour: '#555', solid: 1 },
                 { id: 11, colour: '#0FF', solid: 0, script: 'unlock' },
-				{ id: 12, colour: '#fcfc03', solid: 0, script: 'addcoin'}
+
+                //Coinai
+				        { id: 12, colour: '#fcfc03', solid: 0, script: 'addcoin'}
             ],
 
             /* An array representing the map tiles. Each number corresponds to a key */
@@ -205,23 +208,23 @@ function LoadWholeGame()
                 [2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 2, 2, 2, 4, 2, 2, 2, 1, 2],
                 [2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 4, 2, 1, 1, 1, 2],
                 [2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 4, 2, 1, 2, 2, 2],
+                [2, 1, 1, 1, 1, 12, 1, 1, 1, 1, 1, 1, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 4, 2, 1, 2],
                 [2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 4, 2, 1, 2],
                 [2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 4, 2, 1, 2],
                 [2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 4, 2, 1, 2],
                 [2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 4, 2, 1, 2],
-                [2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 4, 2, 1, 2],
-                [2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 4, 2, 1, 2],
+                [2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 12, 1, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 4, 2, 1, 2],
                 [2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 4, 2, 1, 2],
                 [2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 4, 2, 1, 2],
                 [2, 7, 1, 1, 1, 12, 1, 12, 1, 1, 1, 1, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 4, 2, 1, 2],
                 [2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 4, 2, 1, 2],
                 [2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 1, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 4, 2, 1, 2],
-                [2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 1, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 4, 2, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2],
-                [2, 1, 2, 1, 1, 1, 1, 1, 1, 1, 2, 1, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 4, 2, 1, 2, 2, 2, 2, 2, 2, 2, 2, 1, 1, 1, 1, 2],
-                [2, 1, 2, 2, 1, 1, 1, 1, 1, 1, 2, 1, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 4, 2, 1, 2, 2, 2, 2, 2, 2, 2, 2, 1, 1, 1, 1, 2],
+                [2, 1, 1, 1, 1, 12, 1, 1, 1, 1, 2, 1, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 4, 2, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2],
+                [2, 1, 2, 1, 1, 1, 1, 1, 1, 1, 2, 1, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 12, 1, 1, 1, 2, 4, 2, 1, 2, 2, 2, 2, 2, 2, 2, 2, 1, 1, 1, 1, 2],
+                [2, 1, 2, 2, 1, 1, 1, 1, 12, 1, 2, 1, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 4, 2, 1, 2, 2, 2, 2, 2, 2, 2, 2, 1, 1, 1, 1, 2],
                 [2, 1, 2, 2, 2, 1, 1, 1, 1, 1, 2, 1, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 4, 2, 1, 2, 2, 2, 2, 2, 2, 2, 2, 1, 1, 1, 1, 2],
                 [2, 1, 2, 2, 2, 2, 1, 1, 1, 1, 1, 1, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 4, 2, 1, 2, 2, 2, 2, 2, 2, 2, 2, 8, 1, 1, 1, 2],
-                [2, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 6, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 4, 2],
+                [2, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 6, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 12, 2, 2, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 4, 2],
                 [2, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 9, 9, 9, 2, 10, 10, 10, 10, 10, 10, 1, 1, 1, 1, 1, 1, 1, 11, 2, 2, 2, 2, 4, 2],
                 [2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 10, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 4, 2],
                 [2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 4, 2],
@@ -236,7 +239,7 @@ function LoadWholeGame()
                 [2, 1, 1, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 1, 1, 1, 1, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2],
                 [2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 1, 1, 1, 1, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2],
                 [2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 1, 1, 1, 1, 2, 5, 5, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2],
-                [2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 1, 1, 1, 1, 2, 2, 2, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2],
+                [2, 1, 1, 1, 1, 1, 1, 1, 1, 12, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 1, 1, 1, 1, 2, 2, 2, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2],
                 [2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2],
                 [2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1, 2],
                 [2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 1, 1, 1, 1, 1, 1, 1, 2],
@@ -260,7 +263,7 @@ function LoadWholeGame()
             /* Velocity limits */
 
             vel_limit: {
-                x: 2,
+                x: 5,
                 y: 16
             },
 
@@ -268,8 +271,8 @@ function LoadWholeGame()
 
             movement_speed: {
                 jump: 6,
-                left: 0.3,
-                right: 0.3
+                left: 0.5,
+                right: 0.5
             },
 
             /* The coordinates at which the player spawns and the colour of the player */
@@ -283,12 +286,12 @@ function LoadWholeGame()
             /* scripts refered to by the "script" variable in the tile keys */
 
             scripts: {
-                change_colour: 'this.player.colour = "#"+(Math.random()*0xFFFFFF<<0).toString(16);coinCountt = coinCountt+1;',
+                change_colour: 'this.player.colour = "#"+(Math.random()*0xFFFFFF<<0).toString(16);',
                 /* you could load a new map variable here */
                 next_level: 'alert("Yay! You won! Reloading map.");this.load_map(map);',
                 death: 'alert("You died!");this.load_map(map);',
                 unlock: 'this.current_map.keys[10].solid = 0;this.current_map.keys[10].colour = "#888";',
-				addcoin: 'coinCountt = coinCountt+1;this.current_map.keys[12].colour = "#888";'
+				        addcoin: 'coinCountt = coinCountt+1;this.current_map.data[Math.trunc(Math.trunc(this.player.loc.y+8)/16)][Math.trunc(Math.trunc(this.player.loc.x+8)/16)] = this.current_map.keys[1];'
             }
         };
 
@@ -301,7 +304,7 @@ function LoadWholeGame()
         /* Limit the viewport to the confines of the map */
 
         game.limit_viewport = true;
-		
+
 
         var Loop = function () {
 

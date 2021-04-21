@@ -23,23 +23,23 @@ var win = new Audio('bounce.mp3');
 win.volume = 0.2;
 var coinCountt =0;
 var Clarity = function () {
-  
+
     this.alert_errors   = false;
     this.log_info       = true;
     this.tile_size      = 16;
     this.limit_viewport = false;
     this.jump_switch    = 0;
-    
+
     this.viewport = {
         x: 200,
         y: 200
     };
-    
+
     this.camera = {
         x: 0,
         y: 0
     };
-    
+
     this.key = {
         left: false,
         right: false,
@@ -52,12 +52,12 @@ var Clarity = function () {
             x: 0,
             y: 0
         },
-        
+
         vel: {
             x: 0,
             y: 0
         },
-        
+
         can_jump: true
     };
 
@@ -128,24 +128,24 @@ Clarity.prototype.load_map = function (map) {
     }
 
     this.current_map = map;
-    
+
     this.current_map.background = map.background || '#333';
     this.current_map.gravity = map.gravity || {x: 0, y: 0.3};
     this.tile_size = map.tile_size || 16;
 
     var _this = this;
-    
+
     this.current_map.width = 0;
     this.current_map.height = 0;
 
     map.keys.forEach(function (key) {
 
         map.data.forEach(function (row, y) {
-            
+
             _this.current_map.height = Math.max(_this.current_map.height, y);
 
             row.forEach(function (tile, x) {
-                
+
                 _this.current_map.width = Math.max(_this.current_map.width, x);
 
                 if (tile == key.id)
@@ -153,19 +153,19 @@ Clarity.prototype.load_map = function (map) {
             });
         });
     });
-    
+
     this.current_map.width_p = this.current_map.width * this.tile_size;
     this.current_map.height_p = this.current_map.height * this.tile_size;
 
     this.player.loc.x = map.player.x * this.tile_size || 0;
     this.player.loc.y = map.player.y * this.tile_size || 0;
     this.player.colour = map.player.colour || '#000';
-    
+
     this.camera = {
         x: 0,
         y: 0
     };
-    
+
     this.player.vel = {
         x: 0,
         y: 0
@@ -174,7 +174,7 @@ Clarity.prototype.load_map = function (map) {
     this.log('Successfully loaded map data.');
 
     return true;
-	
+
 };
 
 Clarity.prototype.get_tile = function (x, y) {
@@ -205,12 +205,12 @@ Clarity.prototype.draw_map = function (context, fore) {
 
                 var t_x = (x * this.tile_size) - this.camera.x;
                 var t_y = (y * this.tile_size) - this.camera.y;
-                
+
                 if(t_x < -this.tile_size
                 || t_y < -this.tile_size
                 || t_x > this.viewport.x
                 || t_y > this.viewport.y) continue;
-                
+
                 this.draw_tile(
                     t_x,
                     t_y,
@@ -235,18 +235,18 @@ Clarity.prototype.move_player = function () {
         Math.round(this.player.loc.x / this.tile_size),
         Math.round(this.player.loc.y / this.tile_size)
     );
-     
+
     if(tile.gravity) {
-        
+
         this.player.vel.x += tile.gravity.x;
         this.player.vel.y += tile.gravity.y;
-        
+
     } else {
-        
+
         this.player.vel.x += this.current_map.gravity.x;
         this.player.vel.y += this.current_map.gravity.y;
     }
-    
+
     if (tile.friction) {
 
         this.player.vel.x *= tile.friction.x;
@@ -276,19 +276,19 @@ Clarity.prototype.move_player = function () {
     if (tile.jump && this.jump_switch > 15) {
 
         this.player.can_jump = true;
-        
+
         this.jump_switch = 0;
-        
+
     } else this.jump_switch++;
-    
+
     this.player.vel.x = Math.min(Math.max(this.player.vel.x, -this.current_map.vel_limit.x), this.current_map.vel_limit.x);
     this.player.vel.y = Math.min(Math.max(this.player.vel.y, -this.current_map.vel_limit.y), this.current_map.vel_limit.y);
-    
+
     this.player.loc.x += this.player.vel.x;
     this.player.loc.y += this.player.vel.y;
-    
+
     this.player.vel.x *= .9;
-    
+
     if (left1.solid || left2.solid || right1.solid || right2.solid) {
 
         /* fix overlap */
@@ -311,13 +311,13 @@ Clarity.prototype.move_player = function () {
         if (right2.solid && right2.bounce > bounce) bounce = right2.bounce;
 
         this.player.vel.x *= -bounce || 0;
-        
+
     }
-    
+
     if (top1.solid || top2.solid || bottom1.solid || bottom2.solid) {
 
         /* fix overlap */
-        
+
         while (this.get_tile(x_near1, Math.floor(this.player.loc.y / this.tile_size)).solid
             || this.get_tile(x_near2, Math.floor(this.player.loc.y / this.tile_size)).solid)
             this.player.loc.y += 0.1;
@@ -327,48 +327,48 @@ Clarity.prototype.move_player = function () {
             this.player.loc.y -= 0.1;
 
         /* tile bounce */
-        
+
         var bounce = 0;
-        
+
         if (top1.solid && top1.bounce > bounce) bounce = top1.bounce;
         if (top2.solid && top2.bounce > bounce) bounce = top2.bounce;
         if (bottom1.solid && bottom1.bounce > bounce) bounce = bottom1.bounce;
         if (bottom2.solid && bottom2.bounce > bounce) bounce = bottom2.bounce;
-        
+
         this.player.vel.y *= -bounce || 0;
 
         if ((bottom1.solid || bottom2.solid) && !tile.jump) {
-            
+
             this.player.on_floor = true;
             this.player.can_jump = true;
         }
-        
+
     }
-    
+
     // adjust camera
 
     var c_x = Math.round(this.player.loc.x - this.viewport.x/2);
     var c_y = Math.round(this.player.loc.y - this.viewport.y/2);
     var x_dif = Math.abs(c_x - this.camera.x);
     var y_dif = Math.abs(c_y - this.camera.y);
-    
+
     if(x_dif > 5) {
-        
+
         var mag = Math.round(Math.max(1, x_dif * 0.1));
-    
+
         if(c_x != this.camera.x) {
-            
+
             this.camera.x += c_x > this.camera.x ? mag : -mag;
-            
+
             if(this.limit_viewport) {
-                
-                this.camera.x = 
+
+                this.camera.x =
                     Math.min(
                         this.current_map.width_p - this.viewport.x + this.tile_size,
                         this.camera.x
                     );
-                
-                this.camera.x = 
+
+                this.camera.x =
                     Math.max(
                         0,
                         this.camera.x
@@ -376,24 +376,24 @@ Clarity.prototype.move_player = function () {
             }
         }
     }
-    
+
     if(y_dif > 5) {
-        
+
         var mag = Math.round(Math.max(1, y_dif * 0.1));
-        
+
         if(c_y != this.camera.y) {
-            
+
             this.camera.y += c_y > this.camera.y ? mag : -mag;
-        
+
             if(this.limit_viewport) {
-                
-                this.camera.y = 
+
+                this.camera.y =
                     Math.min(
                         this.current_map.height_p - this.viewport.y + this.tile_size,
                         this.camera.y
                     );
-                
-                this.camera.y = 
+
+                this.camera.y =
                     Math.max(
                         0,
                         this.camera.y
@@ -401,12 +401,12 @@ Clarity.prototype.move_player = function () {
             }
         }
     }
-    
+
     if(this.last_tile != tile.id && tile.script) {
-    
+
         eval(this.current_map.scripts[tile.script]);
     }
-    
+
     this.last_tile = tile.id;
 };
 
@@ -421,7 +421,7 @@ Clarity.prototype.update_player = function () {
     if (this.key.up) {
 
         if (this.player.can_jump && this.player.vel.y > -this.current_map.vel_limit.y) {
-            
+
             this.player.vel.y -= this.current_map.movement_speed.jump;
             this.player.can_jump = false;
         }
@@ -434,7 +434,8 @@ Clarity.prototype.update_player = function () {
     }
 
     this.move_player();
-	document.getElementById("scoreCount").innerHTML = "Score: " + coinCountt;
+	  document.getElementById("scoreCount").innerHTML = "Score: " + coinCountt;
+    document.getElementById("debug").innerHTML = Math.trunc(Math.trunc(this.player.loc.x+8)/16)+"<br>"+Math.trunc(Math.trunc(this.player.loc.y+8)/16) ;
 };
 
 Clarity.prototype.draw_player = function (context) {
@@ -447,7 +448,7 @@ Clarity.prototype.draw_player = function (context) {
         (this.player.loc.y + this.tile_size / 2 - this.camera.y) - this.tile_size / 2,
         this.tile_size  ,
         this.tile_size  );
-	
+
     //context.arc(
     //    this.player.loc.x + this.tile_size / 2 - this.camera.x,
     //    this.player.loc.y + this.tile_size / 2 - this.camera.y,
@@ -474,5 +475,5 @@ Clarity.prototype.draw = function (context) {
 
     this.draw_map(context, false);
     this.draw_player(context);
-    
+
 };
