@@ -22,6 +22,9 @@ THE SOFTWARE.
 var win = new Audio('bounce.mp3');
 win.volume = 0.2;
 
+var win2 = new Audio('gametheme.mp3');
+win2.volume = 0.2;
+
 var jumpsound = new Audio('jump.mp3');
 jumpsound.volume = 1;
 
@@ -350,7 +353,7 @@ Clarity.prototype.move_player = function () {
         if (top2.solid && top2.bounce > bounce) bounce = top2.bounce;
         if (bottom1.solid && bottom1.bounce > bounce) bounce = bottom1.bounce;
         if (bottom2.solid && bottom2.bounce > bounce) bounce = bottom2.bounce;
-        
+
         this.player.vel.y *= -bounce || 0;
 
         if ((bottom1.solid || bottom2.solid) && !tile.jump) {

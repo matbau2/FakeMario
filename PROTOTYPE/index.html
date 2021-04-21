@@ -33,7 +33,7 @@
 	<button class="" onclick="LoadWholeGame(levelonemap);HideShowGame();HideShowStart();win.play()">
         Level 1
     </button>
-	<button onclick="LoadWholeGame(leveltwomap);HideShowGame();HideShowStart()">
+	<button onclick="LoadWholeGame(leveltwomap);HideShowGame();HideShowStart();win2.play();">
         Level 2
     </button>
 		<button onclick="LoadWholeGame();HideShowGame();HideShowStart()">
@@ -101,6 +101,7 @@
   }
 }
 	function PlayStopMusic() {
+    win2.pause();
 	if(win.currentTime > 0){
 	document.getElementById("music").style.background='#f54242';
 	win.pause();
@@ -114,7 +115,13 @@
 }
 
 	function PlayStopFX() {
-
+    win.volume = 0;
+    win2.volume = 0;
+    jumpsound.volume = 0;
+    coinsound.volume = 0;
+    deathsound.volume = 0;
+    interactsound.volume = 0;
+    win.volume = 0;
 }
 
 	function HideAllButtons() {
