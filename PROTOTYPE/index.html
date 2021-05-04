@@ -1,81 +1,39 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-
-
-
-    <title>Clarity</title>
-
-    <link rel="stylesheet" type="text/css" href="style.css" />
-    <script type="text/javascript" src="levels.js"></script>
-    <script type="text/javascript" src="Clarity.js"></script>
+	<title>Clarity</title>
+	<link rel="stylesheet" type="text/css" href="style.css" />
+	<script type="text/javascript" src="levels.js"></script>
+	<script type="text/javascript" src="Clarity.js"></script>
 </head>
 
 <body onload="HideShowGame();HideShowStart()">
-
 	<div id="AllButtons">
-
-	<div id="StartButton" class="text-center">
-    <button id="green play" style="margin-left:auto;margin-right" onclick="HideAllButtons();HideShowStart()">
-        Start
-    </button>
+		<div id="StartButton" class="text-center">
+			<button id="green play" style="margin-left:auto;margin-right" onclick="HideAllButtons();HideShowStart()"> Start </button>
+		</div>
+		<div id="SettingsButton" class="text-center">
+			<button id="green play" onclick="LoadWholeGame();HideShowGame()"> Settings </button>
+		</div>
 	</div>
-
-	<div id="SettingsButton" class="text-center">
-	<button id="green play" onclick="LoadWholeGame();HideShowGame()">
-        Settings
-    </button>
-	</div>
-
-	</div>
-
 	<div id="Start">
-	<button class="" onclick="LoadWholeGame(levelonemap);HideShowGame();HideShowStart();win.play()">
-        Level 1
-    </button>
-	<button onclick="LoadWholeGame(leveltwomap);HideShowGame();HideShowStart();win2.play();">
-        Level 2
-    </button>
-		<button onclick="LoadWholeGame();HideShowGame();HideShowStart()">
-        Level 3
-    </button>
-		<button onclick="LoadWholeGame();HideShowGame();HideShowStart()">
-        Level 4
-    </button>
+		<button class="" onclick="LoadWholeGame(levelonemap);HideShowGame();HideShowStart();win.play()"> Level 1 </button>
+		<button onclick="LoadWholeGame(leveltwomap);HideShowGame();HideShowStart();win2.play();"> Level 2 </button>
+		<button onclick="LoadWholeGame();HideShowGame();HideShowStart()"> Level 3 </button>
+		<button onclick="LoadWholeGame();HideShowGame();HideShowStart()"> Level 4 </button>
 	</div>
-
-
-<div id="gamecontainer">
-    <canvas id="canvas"></canvas>
-
-<!--
-    <p>
-		win.play()
-        Use the left, right and up arrow keys to move.
-
-    </p>
--->
-
-
-
-
-	    <!--
-		<label for="viewport">
-        <input type="checkbox" id="viewport" onclick="game.limit_viewport=this.checked;" checked /> Confine viewport to map
-      </label>
-	  -->
-	  <h1 style="color:white" id="scoreCount">hello<h1/>
+	
+	<div id="gamecontainer">
+		<canvas id="canvas"></canvas>
+		<h1 style="color:white" id="scoreCount">hello<h1/>
       <h2 id="debug" style="color:white">mew<h1/>
 	  		<button id="music" onclick="PlayStopMusic()">
         Play/Stop Backround Music
     </button>
-
 	  		<button id="fx" onclick="PlayStopFX()">
         Play/Stop FX
     </button>
-
-
-
   </div>
 
 
