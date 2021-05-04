@@ -19,25 +19,25 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 */
-var win = new Audio('bounce.mp3');
+var win = new Audio('Sounds/bounce.mp3');
 win.volume = 0.2;
 
-var win2 = new Audio('gametheme.mp3');
+var win2 = new Audio('Sounds/gametheme.mp3');
 win2.volume = 0.2;
 
-var jumpsound = new Audio('jump.mp3');
+var jumpsound = new Audio('Sounds/jump.mp3');
 jumpsound.volume = 1;
 
-var coinsound = new Audio('coin.mp3');
+var coinsound = new Audio('Sounds/coin.mp3');
 coinsound.volume = 1;
 
-var deathsound = new Audio('death.mp3');
+var deathsound = new Audio('Sounds/death.mp3');
 deathsound.volume = 1;
 
-var interactsound = new Audio('interact.mp3');
+var interactsound = new Audio('Sounds/interact.mp3');
 interactsound.volume = 1;
 
-var trampolinesound = new Audio('trampolinesound.mp3');
+var trampolinesound = new Audio('Sounds/trampoline.mp3');
 win.volume = 1;
 
 var coinCountt =0;
