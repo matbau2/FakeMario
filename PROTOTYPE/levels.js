@@ -239,8 +239,8 @@ var leveltwomap = {
     /* Default gravity of the map */
 
     gravity: {
-        x: 0.01,
-        y: 0.3
+        x: 0.0,
+        y: 0.2
     },
 
     /* Velocity limits */
@@ -253,9 +253,9 @@ var leveltwomap = {
     /* Movement speed when the key is pressed */
 
     movement_speed: {
-        jump: -6,
-        left: 0.5,
-        right: 0.5
+        jump: 4.5,
+        left: 0.15,
+        right: 0.15
     },
 
     /* The coordinates at which the player spawns and the colour of the player */
@@ -273,9 +273,9 @@ var leveltwomap = {
         trampol: 'trampolinesound.play();',
         /* you could load a new map variable here */
         next_level: 'alert("Yay! You won! Reloading map.");this.load_map(map);',
-        death: 'alert("You died!");this.load_map(map);',
+        death: 'deathsound.play();LoadWholeGame(leveltwomap);',
         unlock: 'this.current_map.keys[10].solid = 0;this.current_map.keys[10].colour = "#888";',
-        addcoin: 'coinCountt = coinCountt+1;this.current_map.data[Math.trunc(Math.trunc(this.player.loc.y+8)/16)][Math.trunc(Math.trunc(this.player.loc.x+8)/16)] = this.current_map.keys[1];',
+        addcoin: 'coinCountt = coinCountt+1;this.current_map.data[Math.trunc(Math.trunc(this.player.loc.y+8)/16)][Math.trunc(Math.trunc(this.player.loc.x+8)/16)] = this.current_map.keys[0];',
         nflipgravity: 'this.current_map.gravity.y = -0.3',
         pflipgravity: 'this.current_map.gravity.y = 0.3'
     }
