@@ -65,7 +65,7 @@ var levelonemap = {
         [2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 12, 1, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 4, 2, 1, 2],
         [2, 1, 1, 1, 1, 1, 1, 13, 13, 1, 1, 1, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 4, 2, 1, 2],
         [2, 1, 1, 1, 1, 1, 1, 13, 13, 1, 1, 1, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 4, 2, 1, 2],
-        [2, 7, 1, 1, 1, 12, 1, 13, 13, 1, 1, 1, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 4, 2, 1, 2],
+        [2, 7, 1, 1, 1, 12, 9, 13, 13, 1, 1, 1, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 4, 2, 1, 2],
         [2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 4, 2, 1, 2],
         [2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 1, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 4, 2, 1, 2],
         [2, 1, 1, 1, 1, 12, 1, 1, 1, 1, 2, 1, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 4, 2, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2],
@@ -138,7 +138,7 @@ var levelonemap = {
         change_colour: 'this.player.colour = "#"+(Math.random()*0xFFFFFF<<0).toString(16);interactsound.play();',
         /* you could load a new map variable here */
         next_level: 'alert("Yay! You won! Reloading map.");this.load_map(map);',
-        death: 'deathsound.play();LoadWholeGame(levelonemap);',
+        death: 'deathsound.play();this.player.loc.x=28;this.player.loc.y=50;coinCountt = coinCountt+1;',
         unlock: 'this.current_map.keys[10].solid = 0;this.current_map.keys[10].colour = "#888";interactsound.play();',
         addcoin: 'coinCountt = coinCountt+1;this.current_map.data[Math.trunc(Math.trunc(this.player.loc.y+8)/16)][Math.trunc(Math.trunc(this.player.loc.x+8)/16)] = this.current_map.keys[1];coinsound.play();'
     }
@@ -221,8 +221,8 @@ var leveltwomap = {
         [1, 5, 1, 0, 0, 0, 0, 0, 0, 0, 5, 0, 0, 0, 0, 0, 0, 2, 0, 5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 2, 2, 2, 2, 2, 1, 1],
         [1, 5, 2, 0, 0, 0, 0, 0, 0, 0, 5, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 2, 2, 2, 2, 1, 1, 1],
         [1, 5, 2, 2, 0, 5, 0, 0, 0, 0, 0, 0, 0, 5, 0, 0, 0, 1, 0, 0, 2, 0, 0, 0, 5, 0, 0, 0, 0, 5, 0, 5, 0, 0, 0, 5, 0, 0, 0, 0, 0, 1, 0, 1, 2, 2, 2, 1, 1, 1],
-        [1, 5, 2, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 0, 1, 2, 2, 2, 1, 1, 1],
-        [1, 5, 2, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 1, 1, 1, 1, 1, 2, 2, 2, 1, 1, 1],
+        [1, 5, 2, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 0, 1, 2, 2, 2, 1, 1, 1],
+        [1, 5, 2, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 1, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 1, 1, 1, 1, 1, 2, 2, 2, 1, 1, 1],
         [1, 5, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 1, 1, 1, 1, 1, 2, 2, 2, 2, 1, 1],
         [1, 5, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 1],
         [1, 5, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 2, 2, 2, 2, 2, 2, 1, 1, 1, 1, 2, 2, 2, 2, 1, 1],
@@ -273,7 +273,7 @@ var leveltwomap = {
         trampol: 'trampolinesound.play();',
         /* you could load a new map variable here */
         next_level: 'alert("Yay! You won! Reloading map.");this.load_map(map);',
-        death: 'deathsound.play();LoadWholeGame(leveltwomap);',
+        death: 'deathsound.play();;this.player.loc.x=704;this.player.loc.y=832;coinCountt = coinCountt-1;',
         unlock: 'this.current_map.keys[10].solid = 0;this.current_map.keys[10].colour = "#888";',
         addcoin: 'coinCountt = coinCountt+1;this.current_map.data[Math.trunc(Math.trunc(this.player.loc.y+8)/16)][Math.trunc(Math.trunc(this.player.loc.x+8)/16)] = this.current_map.keys[0];',
         nflipgravity: 'this.current_map.gravity.y = -0.3',
