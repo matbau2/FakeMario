@@ -106,7 +106,7 @@ var levelonemap = {
 
     gravity: {
         x: 0,
-        y: 0.3
+        y: 0.25
     },
 
     /* Velocity limits */
@@ -120,8 +120,8 @@ var levelonemap = {
 
     movement_speed: {
         jump: 6,
-        left: 0.5,
-        right: 0.5
+        left: 0.25,
+        right: 0.25
     },
 
     /* The coordinates at which the player spawns and the colour of the player */
@@ -276,7 +276,7 @@ var leveltwomap = {
         death: 'deathsound.play();;this.player.loc.x=704;this.player.loc.y=832;coinCountt = coinCountt-1;',
         unlock: 'this.current_map.keys[10].solid = 0;this.current_map.keys[10].colour = "#888";',
         addcoin: 'coinCountt = coinCountt+1;this.current_map.data[Math.trunc(Math.trunc(this.player.loc.y+8)/16)][Math.trunc(Math.trunc(this.player.loc.x+8)/16)] = this.current_map.keys[0];',
-        nflipgravity: 'this.current_map.gravity.y = -0.3',
-        pflipgravity: 'this.current_map.gravity.y = 0.3'
+        nflipgravity: 'this.current_map.gravity.y = -0.2',
+        pflipgravity: 'this.current_map.gravity.y = 0.2'
     }
 };

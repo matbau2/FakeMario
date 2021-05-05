@@ -22,8 +22,8 @@ THE SOFTWARE.
 var win = new Audio('Sounds/bounce.mp3');
 win.volume = 0.2;
 
-var win2 = new Audio('Sounds/gametheme.mp3');
-win2.volume = 0.2;
+var win2 = new Audio('Sounds/doom.mp3');
+win2.volume = 1;
 
 var jumpsound = new Audio('Sounds/jump.mp3');
 jumpsound.volume = 1;
